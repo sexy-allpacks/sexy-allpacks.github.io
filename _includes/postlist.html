@@ -1,0 +1,19 @@
+<!-- Posts List -->
+<section>
+    <ul class="posts">
+        {% assign posts = site.posts | limit:5 %}
+        {% for post in posts %}
+        <li>
+            <article>
+                <header>
+                    <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+                    <time class="published" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+                </header>
+                {% if post.image %}
+                <a href="{{ post.url | relative_url }}" class="image"><img src="{{ post.image | relative_url }}" alt="" /></a>
+                {% endif %}
+            </article>
+        </li>
+        {% endfor %}
+    </ul>
+</section>

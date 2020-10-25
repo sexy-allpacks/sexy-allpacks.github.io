@@ -1,0 +1,18 @@
+<!-- Header -->
+<header id="header">
+    <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+    <nav class="links">
+        <ul>
+            {% assign menus = site.pages | where:"menu",true %}
+            {% for menu in menus %}
+            <li><a href="{{ menu.url | relative_url }}">{{ menu.title | escape }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+
+    <nav class="main">
+        <ul>
+            <li class="menu"><a class="fa-bars" href="#menu">Menu</a></li>
+        </ul>
+    </nav>
+</header>

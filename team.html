@@ -1,0 +1,23 @@
+---
+layout: page
+title: Equipo
+description: Nuestro equipo
+permalink: /team/
+menu: true
+---
+
+<section>
+    <div class="box alt">
+        <div class="row gtr-uniform">
+            {% assign members = site.data.members | sort:"nick" %}
+            {% for member in members %}
+            <div class="col-3">
+                <h3>{{ member.name | escape }}</h3>                
+                <span class="image fit">
+                    <img src="{{ member.photo | relative_url }}" alt="" />
+                </span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

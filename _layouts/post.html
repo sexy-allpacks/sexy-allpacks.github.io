@@ -1,0 +1,35 @@
+---
+layout: default
+---
+
+{% assign author = site.data.members | where:"nick",page.author | first %}
+
+<!-- Post -->
+<article class="post">
+    <header>
+        <div class="title">
+            <h2><a href="#">{{ page.title }}</a></h2>
+            <p>{{ page.description | default: '' }}</p>
+        </div>
+        <div class="meta">
+            <time class="published" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
+            <a href="#" class="author">
+                <span class="name">{{ author.name | escape }}</span>
+                <img src="{{ author.photo | relative_url }}" alt="" />
+            </a>
+        </div>
+    </header>
+    {% if page.image %}
+        <span class="image featured"><img src="{{ page.image | relative_url }}" alt="" /></span>
+    {% endif %}
+    
+    {{ content }}
+
+    <footer>
+        <ul class="stats">
+            {% for category in page.categories %}
+            <li><a href="#">{{ category | escape }}</a></li>            
+            {% endfor %}
+        </ul>
+    </footer>
+</article>

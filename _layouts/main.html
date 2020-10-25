@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+{% for post in site.posts limit:5 %}
+{% assign author = site.data.members | where:"nick",post.author | first %}
+<article class="post">
+    <header>
+        <div class="title">
+            <h2><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+            <p>{{ post.description | escape }}</p>
+        </div>
+        <div class="meta">
+            <time class="published" datetime="{{ page.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+            <a href="#" class="author">
+                <span class="name">{{ author.name | escape }}</span>
+                <img src="{{ author.photo | relative_url }}" alt="" />
+            </a>
+        </div>
+    </header>
+
+    {% if post.image %}
+    <a href="{{ post.url | relative_url }}" class="image featured"><img src="{{ post.image | relative_url }}" alt=""/></a>
+    {% endif %}
+    <p>{{ post.excerpt }}</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="{{ post.url | relative_url }}" class="button large">Leer más</a></li>
+        </ul>        
+        <ul class="stats">
+            {% for category in post.categories %}
+            <li><a href="#">{{ category | escape }}</a></li>            
+            {% endfor %}
+        </ul>
+    </footer>
+</article>
+{% endfor %}

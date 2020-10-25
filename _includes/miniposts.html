@@ -1,0 +1,20 @@
+<!-- Mini Posts -->
+<section>
+    <div class="mini-posts">
+        <!-- Mini Post -->
+        {% assign posts = site.posts | limit:5 %}
+        {% for post in posts %}
+        {% assign author = site.data.members | where:"nick",post.author | first %}
+        <article class="mini-post">
+            <header>
+                <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+                <time class="published" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+                <a href="#" class="author"><img src="{{ author.photo | relative_url }}" alt="" /></a>
+            </header>
+            {% if post.image %}
+            <a href="{{ post.url | relative_url }}" class="image"><img src="{{ post.image | relative_url }}" alt="" /></a>
+            {% endif %}
+        </article>
+        {% endfor %}
+    </div>
+</section>

@@ -1,0 +1,17 @@
+<!-- Menu -->
+<section id="menu">
+    <!-- Links -->
+    <section>
+        <ul class="links">
+            {% assign menus = site.pages | where:"menu",true %}
+            {% for menu in menus %}
+            <li>
+                <a href="{{ menu.url | relative_url }}">
+                    <h3>{{ menu.title | escape }}</h3>
+                    <p>{{ menu.description | escape }}</p>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+</section>
