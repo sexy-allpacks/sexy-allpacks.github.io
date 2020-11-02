@@ -8,10 +8,10 @@ menu: true
 
 <section>
     <div class="box alt">
-        <div class="row gtr-uniform">
+        <div class="row gtr-uniform align-center aln-center">
             {% assign members = site.data.members | sort:"nick" %}
             {% for member in members %}
-            <div class="col-3">
+            <div class="col-3 col-5-xsmall">
                 <h3>{{ member.name | escape }}</h3>                
                 <span class="image fit">
                     <img src="{{ member.photo | relative_url }}" alt="" />
